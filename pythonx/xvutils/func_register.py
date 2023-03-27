@@ -34,7 +34,7 @@ import vim
 import sys
 import os
 
-def vim_register(name="", keymap="", command="", with_args=False, command_completer=""):
+def vim_register(module_name="xvutils", name="", keymap="", command="", with_args=False, command_completer=""):
     """
     keymap: i:MAP | MAP
     """
@@ -54,10 +54,10 @@ def vim_register(name="", keymap="", command="", with_args=False, command_comple
         vim.command(
 """
 function! %s(list_of_args)
-    execute 'py3' 'xvutils.%s(vim.eval("a:list_of_args"))'
+    execute 'py3' '%s.%s(vim.eval("a:list_of_args"))'
     return ""
 endfunction
-"""%(vim_name, func.__name__))
+"""%(vim_name, module_name, func.__name__))
 
         if keymap != "": 
             vim.command( f"""
@@ -92,10 +92,10 @@ def vim_register_visual(keymap):
         vim.command(
 """
 function! %s(list_of_args)
-    execute 'py3' 'xvutils.%s(vim.eval("a:list_of_args"))'
+    execute 'py3' '%s.%s(vim.eval("a:list_of_args"))'
     return ""
 endfunction
-"""%(vim_name, func.__name__))
+"""%(vim_name, module_name, func.__name__))
 
         assert keymap != "", "Error"
         vim.command(f"""
