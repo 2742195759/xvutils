@@ -53,7 +53,7 @@ class VimVariable:
 
     def assign(self, pyobj):
         global_variable[self._name] = pyobj
-        vimcommand('let %s = pyxeval("Xiongkun.global_variable[\'%s\']")' 
+        vimcommand('let %s = pyxeval("xvutils.global_variable[\'%s\']")' 
             % (self._name, self._name))
         return self
 

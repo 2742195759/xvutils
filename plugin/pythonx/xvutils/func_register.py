@@ -54,7 +54,7 @@ def vim_register(name="", keymap="", command="", with_args=False, command_comple
         vim.command(
 """
 function! %s(list_of_args)
-    execute 'py3' 'Xiongkun.%s(vim.eval("a:list_of_args"))'
+    execute 'py3' 'xvutils.%s(vim.eval("a:list_of_args"))'
     return ""
 endfunction
 """%(vim_name, func.__name__))
@@ -92,7 +92,7 @@ def vim_register_visual(keymap):
         vim.command(
 """
 function! %s(list_of_args)
-    execute 'py3' 'Xiongkun.%s(vim.eval("a:list_of_args"))'
+    execute 'py3' 'xvutils.%s(vim.eval("a:list_of_args"))'
     return ""
 endfunction
 """%(vim_name, func.__name__))
