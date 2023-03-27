@@ -4,6 +4,6 @@ from .multiprocess_utils import *
 from .vim_utils import *
 
 @vim_register(command="Yes")
-def yes():
+def yes(args):
     print ("Hello, world!")
 
